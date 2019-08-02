@@ -24,10 +24,10 @@ class PlayerReportForm extends CustomForm
             array_push($this->pnarr, $player->getName());
         }
         $elements = [
-            new Input("reportname", "Report Name", "Spieler ... hackt..."),
-            new Dropdown("pno", "Spieler wählen", $this->pnarr),
-            new Input("desc", "Beschreibung der Tat"),
-            new Input("notizen", "weitere Notizen(Dein DiscordTag, ...)")
+            new Input("reportname", "Report name", "fly hacker..."),
+            new Dropdown("pno", "choose Player", $this->pnarr),
+            new Input("desc", "description, what did the player do?"),
+            new Input("notizen", "notes(discord tag, ...)")
         ];
         parent::__construct($title, $elements, function (Player $player, CustomFormResponse $response) : void {
             $reportname = $response->getString("reportname");
@@ -37,7 +37,7 @@ class PlayerReportForm extends CustomForm
             $notizen = $response->getString("notizen");
 
             Report::getInstance()->saveReport($reportname, $player->getName(), $playername, $desc, $notizen);
-            $player->sendMessage("§l§0ReportSystem §r§7> §eDein Report wurde gespeichert!");
+            $player->sendMessage("§l§0ReportSystem §r§7> §eyour report was sent!");
             return;
         });
     }

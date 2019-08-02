@@ -15,7 +15,7 @@ class ReportCommand extends Command
      */
     public function __construct(string $name)
     {
-        $description = "Sendet einen Report";
+        $description = "send report to admins";
         $usageMessage = "/report";
         $aliases = ["rport", "reeport", "reprt"];
         parent::__construct($name, $description, $usageMessage, $aliases);
