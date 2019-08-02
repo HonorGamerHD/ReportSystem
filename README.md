@@ -14,8 +14,11 @@ this plugin use [dktapps](https://github.com/dktapps) great [pmforms](https://gi
     - [ ] send report to all op's
 - [ ] Missing Features
     - [ ] multilang
-    - [ ] config file
-    - [ ] better customization
+    - [x] config file
+    - [x] customization
+        - [x] prefix
+        - [ ] messages
+    - [ ] version checker
     - [ ] and more ;)
 - [x] API for other plugins
 
