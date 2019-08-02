@@ -1,0 +1,5 @@
+#Configuration file for Reportsystem by ImNotYourDev
+
+#plugin prefix
+#default: "§l§0ReportSystem §r§7> "
+prefix: "§l§0ReportSystem §r§7> "

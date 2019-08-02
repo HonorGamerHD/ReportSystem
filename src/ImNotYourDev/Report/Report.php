@@ -9,10 +9,14 @@ use pocketmine\utils\Config;
 class Report extends PluginBase
 {
     public static $instance;
+    public $prefix;
 
     public function onEnable()
     {
         self::$instance = $this;
+        $this->saveResource("config.yml");
+        $this->prefix = $this->getPluginConfig()->get("prefix");
+        $this->getLogger()->info($this->prefix . "ReportSystem by ImNotYourDev enabled!");
         $this->getServer()->getCommandMap()->register("report", new ReportCommand("report"));
     }
 
@@ -22,6 +26,14 @@ class Report extends PluginBase
     public static function getInstance() : Report
     {
         return self::$instance;
+    }
+
+    /**
+     * @return Config
+     */
+    public function getPluginConfig() : Config
+    {
+        return new Config($this->getDataFolder() . "config.yml", Config::YAML);
     }
 
     /**
@@ -48,7 +60,7 @@ class Report extends PluginBase
             "reporter" => $reporter,
             "player" => $playername,
             "desc" => $desc,
-            "notizen" => $notizen
+            "notes" => $notizen
         ];
         $int = count($cfg->getAll()) + 1; //no overwrite
         $cfg->setNested("reports.$reportname$int", $report);

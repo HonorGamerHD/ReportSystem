@@ -37,7 +37,7 @@ class PlayerReportForm extends CustomForm
             $notizen = $response->getString("notizen");
 
             Report::getInstance()->saveReport($reportname, $player->getName(), $playername, $desc, $notizen);
-            $player->sendMessage("§l§0ReportSystem §r§7> §eyour report was sent!");
+            $player->sendMessage(Report::getInstance()->prefix . "§eYour report was sent!");
             return;
         });
     }
