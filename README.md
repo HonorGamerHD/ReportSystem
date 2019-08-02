@@ -1,6 +1,6 @@
 # ReportSystem
 simple and clean reportsystem with UI's for everyone!
-this plugin use [dktapps](https://github.com/dktapps) great [pmforms](https://github.com/dktapps-pm-pl/pmforms) API library
+<br>this plugin use [dktapps](https://github.com/dktapps) great [pmforms](https://github.com/dktapps-pm-pl/pmforms) API library
 
 ## Todo List
 
@@ -28,6 +28,16 @@ this plugin use [dktapps](https://github.com/dktapps) great [pmforms](https://gi
 
 `Report::getInstance()->saveReport($reportname, $reporter, $playername, $desc, $notizen)`
 <br>save another report
+
+## Where can i download ReportSystem?
+### Download phar
+You can download latest phar at [poggit](https://poggit.pmmp.io/ci/HonorGamerHD/ReportSystem/ReportSystem)
+
+### Download zip
+You can download this plugin as zip and run this as folder plugin(needs [Devtools](https://poggit.pmmp.io/p/DevTools/1.13.4))
+
+### Clone repo into local repo
+You can clone this plugin into your IDE(needs [Git](https://git-scm.com/))
 
 ## Help me to add more features!
 create an new pull request and help me to develop this reportsystem!
