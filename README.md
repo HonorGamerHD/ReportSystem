@@ -12,6 +12,11 @@ this plugin use [dktapps](https://github.com/dktapps) great [pmforms](https://gi
     - [ ] admin ui
     - [ ] direct ban
     - [ ] send report to all op's
+- [ ] Missing Features
+    - [ ] multilang
+    - [ ] config file
+    - [ ] better customization
+    - [ ] and more ;)
 - [x] API for other plugins
 
 ## For plugin devs
