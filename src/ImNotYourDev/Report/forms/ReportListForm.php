@@ -9,7 +9,7 @@ use pocketmine\Player;
 
 class ReportListForm extends MenuForm
 {
-    public $options  = [];
+    public $options = [];
     public function __construct()
     {
         $title = "§cReportSystem §7> §eList";

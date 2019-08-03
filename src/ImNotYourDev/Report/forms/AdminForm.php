@@ -15,11 +15,14 @@ class AdminForm extends MenuForm
         $text = "ReportSystem admin tools";
         $options = [
             new MenuOption("§eReportlist"),
+            new MenuOption("§cRecycle Bin"),
             new MenuOption("§7Settings(soon)")
         ];
         parent::__construct($title, $text, $options, function (Player $player, $data) : void {
             if($data == 0){
                 $player->sendForm(new ReportListForm());
+            }elseif(1){
+                $player->sendForm(new RecycleBinForm());
             }else{
                 $player->sendMessage(Report::getInstance()->prefix . "§csoon available!");
                 $player->sendForm($this);

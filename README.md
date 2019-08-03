@@ -10,21 +10,23 @@ This Reportsystem is useable for one mc server network types like [Minehub](http
     - [x] /reportlist
     - [x] /reportadmin
 - [x] Admin
-    - [x] admin ui
-    - [ ] direct ban
-    - [x] send report to all op's and permitted players
+    - [x] Admin ui
+    - [ ] Direct ban
+    - [x] Send report to all op's and permitted players
 - [ ] Missing Features
-    - [x] modular system
-    - [ ] multilang
-    - [x] review notification
-        - [x] for new reports
+    - [x] Modular system
+    - [ ] Multilang
+    - [x] Review notification
+        - [x] For new reports
         - [x] at join
-    - [x] visible review
-    - [ ] plugin ingame settings
-    - [x] config file
-    - [x] customization
+    - [x] Visible review
+    - [ ] Plugin ingame settings
+    - [x] Config file
+    - [x] Customization
         - [x] prefix
         - [ ] messages
+    - [x] Deleteable reports
+    - [x] Recycle Bin
     - [ ] and more ;)
 - [x] API for other plugins
 
