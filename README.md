@@ -49,8 +49,21 @@ Permission to open report list
 `Report::getInstance()->getReportList();`
 <br>Returns array of all reports
 
+`Report::getInstance()->getRecycleBinList();`
+<br>Returns array of all reports in recycle bin
+
 `Report::getInstance()->saveReport($reportname, $reporter, $playername, $desc, $notes)`
 <br>Save another report
+
+`Report::getInstance()->sendReportToMod()`
+<br>Send "new report" mesage to all server mods
+
+`Report::getInstance()->sendReportToMod()`
+<br>Send "new report" mesage to all server mods
+
+`Report::getInstance()->checkForUnreviewed()`
+<br>Returns true if some reports are unreviewed
+<br>and more API methods, just look into [main class](https://github.com/HonorGamerHD/ReportSystem/blob/master/src/ImNotYourDev/Report/Report.php). ;)
 
 ## Where can i download ReportSystem?
 ### Download phar
