@@ -2,7 +2,9 @@
 
 namespace ImNotYourDev\Report;
 
+use ImNotYourDev\Report\commands\AdminCommand;
 use ImNotYourDev\Report\commands\ReportCommand;
+use ImNotYourDev\Report\commands\ReportListCommand;
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\Config;
 
@@ -18,6 +20,8 @@ class Report extends PluginBase
         $this->prefix = $this->getPluginConfig()->get("prefix");
         $this->getLogger()->info($this->prefix . "ReportSystem by ImNotYourDev enabled!");
         $this->getServer()->getCommandMap()->register("report", new ReportCommand("report"));
+        $this->getServer()->getCommandMap()->register("reportadmin", new AdminCommand("reportadmin"));
+        $this->getServer()->getCommandMap()->register("reportlist", new ReportListCommand("reportlist"));
     }
 
     /**
@@ -42,7 +46,7 @@ class Report extends PluginBase
     public function getReportList() : array
     {
         $cfg = new Config($this->getDataFolder() . "reports.yml", Config::YAML);
-        return $cfg->getAll();
+        return $cfg->get("reports", []);
     }
 
     /**
@@ -62,7 +66,7 @@ class Report extends PluginBase
             "desc" => $desc,
             "notes" => $notizen
         ];
-        $int = count($cfg->getAll()) + 1; //no overwrite
+        $int = count($cfg->get("reports", [])) + 1; //no overwrite
         $cfg->setNested("reports.$reportname$int", $report);
         $cfg->save();
     }

@@ -21,17 +21,17 @@ class PlayerReportForm extends CustomForm
         $title = "§cSpielerreport";
         foreach (Report::getInstance()->getServer()->getOnlinePlayers() as $player)
         {
-            array_push($this->pnarr, $player->getName());
+            $this->pnarr[$player->getName()] = $player->getName();
         }
         $elements = [
             new Input("reportname", "Report name", "fly hacker..."),
-            new Dropdown("pno", "choose Player", $this->pnarr),
-            new Input("desc", "description, what did the player do?"),
-            new Input("notizen", "notes(discord tag, ...)")
+            new Dropdown("playername", "Choose Player", $this->pnarr),
+            new Input("desc", "Description, what did the player do?"),
+            new Input("notizen", "Notes(discord tag, ...)")
         ];
         parent::__construct($title, $elements, function (Player $player, CustomFormResponse $response) : void {
             $reportname = $response->getString("reportname");
-            $pint = $response->getInt("pno");
+            $pint = $response->getInt("playername");
             $playername = array_keys($this->pnarr)[$pint];
             $desc = $response->getString("desc");
             $notizen = $response->getString("notizen");

@@ -6,14 +6,17 @@ simple and clean reportsystem with UI's for everyone!
 
 - [x] Commands
     - [x] /report
-    - [ ] /reportlist
-    - [ ] /reportadmin
-- [ ] Admin
-    - [ ] admin ui
+    - [x] /reportlist
+    - [x] /reportadmin
+- [x] Admin
+    - [x] admin ui
     - [ ] direct ban
     - [ ] send report to all op's
 - [ ] Missing Features
     - [ ] multilang
+    - [ ] review notification
+    - [ ] visible review
+    - [ ] plugin ingame settings
     - [x] config file
     - [x] customization
         - [x] prefix
@@ -22,12 +25,27 @@ simple and clean reportsystem with UI's for everyone!
     - [ ] and more ;)
 - [x] API for other plugins
 
-## For plugin devs
-`Report::getInstance()->getReportList();`
-<br>returns array of all reports
+## Permissions
+### /report
+No permission needed - useable for everyone
 
-`Report::getInstance()->saveReport($reportname, $reporter, $playername, $desc, $notizen)`
-<br>save another report
+### /reportadmin
+Permission: `reportsystem.admin`
+Permission to open admin ui
+
+### /reportlist
+Permission: `reportsystem.admin`
+Permission to open report list
+
+## For plugin devs
+`Report::getInstance()`
+<br>Get plugins instance
+
+`Report::getInstance()->getReportList();`
+<br>Returns array of all reports
+
+`Report::getInstance()->saveReport($reportname, $reporter, $playername, $desc, $notes)`
+<br>Save another report
 
 ## Where can i download ReportSystem?
 ### Download phar

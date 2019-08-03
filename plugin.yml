@@ -7,3 +7,8 @@ api:
   - 3.9.3
 version: 1.0
 author: ImNotYourDev
+
+permissions:
+  reportsystem.admin:
+    description: open admin ui and report list
+    default: op
