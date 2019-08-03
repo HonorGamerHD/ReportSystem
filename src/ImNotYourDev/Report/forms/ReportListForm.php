@@ -15,7 +15,11 @@ class ReportListForm extends MenuForm
         $title = "§cReportSystem §7> §eList";
         $text = "Choose now an report to review";
         foreach (Report::getInstance()->getReportList() as $report){
-            $this->options[] = new MenuOption($report["name"]);
+            if($report["reviewed"] == false){
+                $this->options[] = new MenuOption("§eNEW: §r" . $report["name"]);
+            }else{
+                $this->options[] = new MenuOption($report["name"]);
+            }
         }
         parent::__construct($title, $text, $this->options, function (Player $player, $data) : void {
             $player->sendForm(new ReviewReportForm(Report::getInstance()->getReportList()[array_keys(Report::getInstance()->getReportList())[$data]]));

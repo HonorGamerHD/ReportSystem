@@ -20,6 +20,9 @@ class ReviewReportForm extends MenuForm
             new MenuOption("§7Teleport(only if online)"),
             new MenuOption("§cBan player(soon)")
         ];
+
+        Report::getInstance()->setReviewed($report["nestdir"]);
+
         parent::__construct($title, $text, $options, function (Player $player, $data) : void {
             if($data == 0){
                 $target = Report::getInstance()->getServer()->getPlayer($this->report["player"]);

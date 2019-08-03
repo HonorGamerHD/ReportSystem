@@ -12,18 +12,19 @@ This Reportsystem is useable for one mc server network types like [Minehub](http
 - [x] Admin
     - [x] admin ui
     - [ ] direct ban
-    - [ ] send report to all op's
+    - [x] send report to all op's and permitted players
 - [ ] Missing Features
     - [x] modular system
     - [ ] multilang
-    - [ ] review notification
-    - [ ] visible review
+    - [x] review notification
+        - [x] for new reports
+        - [x] at join
+    - [x] visible review
     - [ ] plugin ingame settings
     - [x] config file
     - [x] customization
         - [x] prefix
         - [ ] messages
-    - [ ] version checker
     - [ ] and more ;)
 - [x] API for other plugins
 

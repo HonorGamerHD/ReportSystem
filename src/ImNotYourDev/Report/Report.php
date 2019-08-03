@@ -5,6 +5,7 @@ namespace ImNotYourDev\Report;
 use ImNotYourDev\Report\commands\AdminCommand;
 use ImNotYourDev\Report\commands\ReportCommand;
 use ImNotYourDev\Report\commands\ReportListCommand;
+use ImNotYourDev\Report\listener\EventListener;
 use ImNotYourDev\Report\tasks\ReportRecieve;
 use ImNotYourDev\Report\tasks\ReportReset;
 use pocketmine\plugin\PluginBase;
@@ -15,6 +16,7 @@ class Report extends PluginBase
     public static $instance;
     public $prefix;
     public $mode = "local";
+    public $unreviewed = false;
 
     public function onEnable()
     {
@@ -28,11 +30,13 @@ class Report extends PluginBase
             $cfg->set("new", false);
             $cfg->save();
         }
-        $this->getLogger()->info($this->prefix . "ReportSystem by ImNotYourDev enabled!");
-        $this->getLogger()->info("§7System mode: §e" . $this->mode);
+        $this->getServer()->getPluginManager()->registerEvents(new EventListener(), $this);
         $this->getServer()->getCommandMap()->register("report", new ReportCommand("report"));
         $this->getServer()->getCommandMap()->register("reportadmin", new AdminCommand("reportadmin"));
         $this->getServer()->getCommandMap()->register("reportlist", new ReportListCommand("reportlist"));
+
+        $this->getLogger()->info("§7System mode: §e" . $this->mode);
+        $this->getLogger()->info($this->prefix . "ReportSystem by ImNotYourDev enabled!");
 
         $this->getScheduler()->scheduleRepeatingTask(new ReportRecieve(), 20);
     }
@@ -78,26 +82,30 @@ class Report extends PluginBase
     {
         if($this->mode == "local"){
             $cfg = new Config($this->getDataFolder() . "reports.yml", Config::YAML);
+            $int = count($cfg->get("reports", [])) + 1; //no overwrite
             $report = [
                 "name" => $reportname,
+                "nestdir" => $reportname . $int,
                 "reporter" => $reporter,
                 "player" => $playername,
                 "desc" => $desc,
-                "notes" => $notizen
+                "notes" => $notizen,
+                "reviewed" => false
             ];
-            $int = count($cfg->get("reports", [])) + 1; //no overwrite
             $cfg->setNested("reports.$reportname$int", $report);
             $cfg->save();
         }else{
             $cfg = new Config("/reports/reports.yml", Config::YAML);
+            $int = count($cfg->get("reports", [])) + 1; //no overwrite
             $report = [
                 "name" => $reportname,
+                "nestdir" => $reportname . $int,
                 "reporter" => $reporter,
                 "player" => $playername,
                 "desc" => $desc,
-                "notes" => $notizen
+                "notes" => $notizen,
+                "reviewed" => false
             ];
-            $int = count($cfg->get("reports", [])) + 1; //no overwrite
             $cfg->setNested("reports.$reportname$int", $report);
             $cfg->save();
         }
@@ -120,5 +128,30 @@ class Report extends PluginBase
             $cfg->save();
             $this->getScheduler()->scheduleDelayedTask(new ReportReset(), 20);
         }
+    }
+
+    /**
+     * @return bool
+     */
+    public function checkForUnreviewed() : bool
+    {
+        foreach ($this->getReportList() as $report){
+            if($report["reviewed"] == false){
+                $this->unreviewed = true;
+            }else{
+                $this->unreviewed = false;
+            }
+        }
+        return $this->unreviewed;
+    }
+
+    /**
+     * @param String $reportnestdir
+     */
+    public function setReviewed(String $reportnestdir)
+    {
+        $cfg = new Config("/reports/reports.yml", Config::YAML);
+        $cfg->setNested("reports.$reportnestdir.reviewed", true);
+        $cfg->save();
     }
 }
