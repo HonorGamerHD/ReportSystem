@@ -25,7 +25,7 @@ class Report extends PluginBase
         $this->mode = $this->getPluginConfig()->get("mode");
         $this->prefix = $this->getPluginConfig()->get("prefix");
         if($this->mode == "global"){
-            @mkdir("/reports/");
+            mkdir("/reports", 777);
             $cfg = new Config("/reports/inf.yml", Config::YAML);
             $cfg->set("new", false);
             $cfg->save();
