@@ -38,6 +38,7 @@ class PlayerReportForm extends CustomForm
 
             Report::getInstance()->saveReport($reportname, $player->getName(), $playername, $desc, $notizen);
             $player->sendMessage(Report::getInstance()->prefix . "§eYour report was sent!");
+            Report::getInstance()->sendReportToMod();
             return;
         });
     }

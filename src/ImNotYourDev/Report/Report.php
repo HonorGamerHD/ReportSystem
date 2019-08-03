@@ -5,6 +5,8 @@ namespace ImNotYourDev\Report;
 use ImNotYourDev\Report\commands\AdminCommand;
 use ImNotYourDev\Report\commands\ReportCommand;
 use ImNotYourDev\Report\commands\ReportListCommand;
+use ImNotYourDev\Report\tasks\ReportRecieve;
+use ImNotYourDev\Report\tasks\ReportReset;
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\Config;
 
@@ -22,12 +24,17 @@ class Report extends PluginBase
         $this->prefix = $this->getPluginConfig()->get("prefix");
         if($this->mode == "global"){
             @mkdir("/reports/");
+            $cfg = new Config("/reports/inf.yml", Config::YAML);
+            $cfg->set("new", false);
+            $cfg->save();
         }
         $this->getLogger()->info($this->prefix . "ReportSystem by ImNotYourDev enabled!");
         $this->getLogger()->info("§7System mode: §e" . $this->mode);
         $this->getServer()->getCommandMap()->register("report", new ReportCommand("report"));
         $this->getServer()->getCommandMap()->register("reportadmin", new AdminCommand("reportadmin"));
         $this->getServer()->getCommandMap()->register("reportlist", new ReportListCommand("reportlist"));
+
+        $this->getScheduler()->scheduleRepeatingTask(new ReportRecieve(), 20);
     }
 
     /**
@@ -93,6 +100,25 @@ class Report extends PluginBase
             $int = count($cfg->get("reports", [])) + 1; //no overwrite
             $cfg->setNested("reports.$reportname$int", $report);
             $cfg->save();
+        }
+    }
+
+    /**
+     * NOTE: maybe not the best thing but wokring!
+     */
+    public function sendReportToMod()
+    {
+        if($this->mode == "local"){
+            foreach ($this->getServer()->getOnlinePlayers() as $player){
+                if($player->hasPermission("reportssystem.admin")){
+                    $player->sendMessage($this->prefix . "§eNew Report! §7Use /reportadmin to see latest reports!");
+                }
+            }
+        }else{
+            $cfg = new Config("/reports/inf.yml", Config::YAML);
+            $cfg->set("new", true);
+            $cfg->save();
+            $this->getScheduler()->scheduleDelayedTask(new ReportReset(), 20);
         }
     }
 }
