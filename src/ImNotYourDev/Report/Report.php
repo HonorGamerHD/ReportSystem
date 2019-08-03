@@ -175,19 +175,34 @@ class Report extends PluginBase
     /**
      * @param array $report
      */
-    public function moveToRecycleBin(array $report)
+     public function moveToRecycleBin(array $report)
     {
-        $cfg = new Config("/reports/reports.yml", Config::YAML);
-        $cfg->removeNested("reports." . $report["nestdir"]);
-        $cfg->save();
+    	if($this->mode == "local"){
+    		$cfg = new Config($this->getDataFolder() . "reports.yml", Config::YAML);
+        	$cfg->removeNested("reports." . $report["nestdir"]);
+        	$cfg->save();
 
-        $cfg->setNested("recyclebin." . $report["nestdir"], $report);
-        $cfg->save();
+        	$cfg->setNested("recyclebin." . $report["nestdir"], $report);
+        	$cfg->save();
+    	}else{
+        	$cfg = new Config("/reports/reports.yml", Config::YAML);
+        	$cfg->removeNested("reports." . $report["nestdir"]);
+        	$cfg->save();
+
+        	$cfg->setNested("recyclebin." . $report["nestdir"], $report);
+        	$cfg->save();
+    	}
     }
 
     public function deleteForEver(String $reportnestdir){
-        $cfg = new Config("/reports/reports.yml", Config::YAML);
-        $cfg->removeNested("recyclebin." . $reportnestdir);
-        $cfg->save();
-    }
+        if($this->mode == "local"){
+    		$cfg = new Config($this->getDataFolder() . "reports.yml", Config::YAML);
+        	$cfg->removeNested("recyclebin." . $reportnestdir);
+        	$cfg->save();
+    	}else{
+        	$cfg = new Config("/reports/reports.yml", Config::YAML);
+        	$cfg->removeNested("recyclebin." . $reportnestdir);
+        	$cfg->save();
+    	}
+    }
 }
