@@ -21,7 +21,7 @@ class AdminForm extends MenuForm
         parent::__construct($title, $text, $options, function (Player $player, $data) : void {
             if($data == 0){
                 $player->sendForm(new ReportListForm());
-            }elseif(1){
+            }elseif($data == 1){
                 $player->sendForm(new RecycleBinForm());
             }else{
                 $player->sendMessage(Report::getInstance()->prefix . "§csoon available!");
