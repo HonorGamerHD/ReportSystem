@@ -1,6 +1,7 @@
-# ReportSystem
+# ReportSystem - modular Reportsystem
 simple and clean reportsystem with UI's for everyone!
-<br>this plugin use [dktapps](https://github.com/dktapps) great [pmforms](https://github.com/dktapps-pm-pl/pmforms) API library
+<br>this plugin use [dktapps](https://github.com/dktapps) great [pmforms](https://github.com/dktapps-pm-pl/pmforms) API library.
+This Reportsystem is useable for one mc server network types like [Minehub](https://minehub.de) or [Server.pro](https://server.pro) servers and also for bigger networks with more than one mc server!
 
 ## Todo List
 
@@ -13,6 +14,7 @@ simple and clean reportsystem with UI's for everyone!
     - [ ] direct ban
     - [ ] send report to all op's
 - [ ] Missing Features
+    - [x] modular system
     - [ ] multilang
     - [ ] review notification
     - [ ] visible review

@@ -3,3 +3,9 @@
 #plugin prefix
 #default: "§l§0ReportSystem §r§7> "
 prefix: "§l§0ReportSystem §r§7> "
+
+#global or local server mode
+#if set to global files will be stored in /reports in server root dir. otherwise they stored in plugin data dir
+#modes: global, local
+#default: local
+mode: local
