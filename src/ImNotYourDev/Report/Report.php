@@ -24,11 +24,13 @@ class Report extends PluginBase
         $this->saveResource("config.yml");
         $this->mode = $this->getPluginConfig()->get("mode");
         $this->prefix = $this->getPluginConfig()->get("prefix");
-        if($this->mode == "global"){
+        if($this->mode === "global"){
             @mkdir("/reports/");
             $cfg = new Config("/reports/inf.yml", Config::YAML);
             $cfg->set("new", false);
             $cfg->save();
+
+            $this->getScheduler()->scheduleRepeatingTask(new ReportRecieve(), 20); //never ever start outsite of this thing...
         }
         $this->getServer()->getPluginManager()->registerEvents(new EventListener(), $this);
         $this->getServer()->getCommandMap()->register("report", new ReportCommand("report"));
@@ -37,8 +39,6 @@ class Report extends PluginBase
 
         $this->getLogger()->info("§7System mode: §e" . $this->mode);
         $this->getLogger()->info($this->prefix . "ReportSystem by ImNotYourDev enabled!");
-
-        $this->getScheduler()->scheduleRepeatingTask(new ReportRecieve(), 20);
     }
 
     /**
