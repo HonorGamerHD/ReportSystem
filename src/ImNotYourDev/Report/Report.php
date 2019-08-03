@@ -161,10 +161,16 @@ class Report extends PluginBase
      */
     public function setReviewed(String $reportnestdir)
     {
-        $cfg = new Config("/reports/reports.yml", Config::YAML);
-        $cfg->setNested("reports.$reportnestdir.reviewed", true);
-        $cfg->save();
-    }
+    	if($this->mode == "local"){
+    		$cfg = new Config($this->getDataFolder() . "reports.yml", Config::YAML);
+        	$cfg->setNested("reports.$reportnestdir.reviewed", true);
+        	$cfg->save();
+    	}else{
+    		$cfg = new Config("/reports/reports.yml", Config::YAML);
+        	$cfg->setNested("reports.$reportnestdir.reviewed", true);
+        	$cfg->save();
+    	}
+    }
 
     /**
      * @param array $report
