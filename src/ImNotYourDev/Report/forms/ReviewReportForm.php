@@ -19,7 +19,8 @@ class ReviewReportForm extends MenuForm
         $options = [
             new MenuOption("§7Teleport(only if online)"),
             new MenuOption("§cBan player(soon)"),
-            new MenuOption("§4Delete report")
+            new MenuOption("§4Delete report"),
+            new MenuOption("§cBack")
         ];
 
         Report::getInstance()->setReviewed($report["nestdir"]);
@@ -37,9 +38,12 @@ class ReviewReportForm extends MenuForm
             }elseif($data == 1){
                 $player->sendMessage(Report::getInstance()->prefix . "§csoon available!");
                 $player->sendForm($this);
-            }else{
+            }elseif($data == 2){
                 Report::getInstance()->moveToRecycleBin($this->report);
                 $player->sendMessage(Report::getInstance()->prefix . "Report moved to Recycle Bin!");
+                $player->sendForm(new ReportListForm());
+            }else{
+                $player->sendForm(new ReportListForm());
             }
             return;
         });

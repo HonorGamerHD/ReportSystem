@@ -21,8 +21,13 @@ class ReportListForm extends MenuForm
                 $this->options[] = new MenuOption($report["name"]);
             }
         }
+        $this->options[] = new MenuOption("§cBack");
         parent::__construct($title, $text, $this->options, function (Player $player, $data) : void {
-            $player->sendForm(new ReviewReportForm(Report::getInstance()->getReportList()[array_keys(Report::getInstance()->getReportList())[$data]]));
+            if($data == count($this->options) - 1){
+                $player->sendForm(new AdminForm());
+            }else{
+                $player->sendForm(new ReviewReportForm(Report::getInstance()->getReportList()[array_keys(Report::getInstance()->getReportList())[$data]]));
+            }
             return;
         });
     }

@@ -16,16 +16,19 @@ class AdminForm extends MenuForm
         $options = [
             new MenuOption("§eReportlist"),
             new MenuOption("§cRecycle Bin"),
-            new MenuOption("§7Settings(soon)")
+            new MenuOption("§7Settings(soon)"),
+            new MenuOption("§4Exit")
         ];
         parent::__construct($title, $text, $options, function (Player $player, $data) : void {
             if($data == 0){
                 $player->sendForm(new ReportListForm());
             }elseif($data == 1){
                 $player->sendForm(new RecycleBinForm());
-            }else{
+            }elseif($data == 2){
                 $player->sendMessage(Report::getInstance()->prefix . "§csoon available!");
                 $player->sendForm($this);
+            }else{
+                $player->removeAllWindows();
             }
             return;
         });
