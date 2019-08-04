@@ -30,6 +30,16 @@ This Reportsystem is useable for one mc server network types like [Minehub](http
     - [ ] and more ;)
 - [x] API for other plugins
 
+## Where can i download ReportSystem?
+### Download phar
+You can download latest phar at [poggit](https://poggit.pmmp.io/ci/HonorGamerHD/ReportSystem/ReportSystem)
+
+### Download zip
+You can download this plugin as zip and run this as folder plugin(needs [Devtools](https://poggit.pmmp.io/p/DevTools/1.13.4))
+
+### Clone repo into local repo
+You can clone this plugin into your IDE(needs [Git](https://git-scm.com/))
+
 ## Permissions
 ### /report
 No permission needed - useable for everyone
@@ -64,16 +74,6 @@ Permission to open report list
 `Report::getInstance()->checkForUnreviewed()`
 <br>Returns true if some reports are unreviewed
 <br>and more API methods, just look into [main class](https://github.com/HonorGamerHD/ReportSystem/blob/master/src/ImNotYourDev/Report/Report.php). ;)
-
-## Where can i download ReportSystem?
-### Download phar
-You can download latest phar at [poggit](https://poggit.pmmp.io/ci/HonorGamerHD/ReportSystem/ReportSystem)
-
-### Download zip
-You can download this plugin as zip and run this as folder plugin(needs [Devtools](https://poggit.pmmp.io/p/DevTools/1.13.4))
-
-### Clone repo into local repo
-You can clone this plugin into your IDE(needs [Git](https://git-scm.com/))
 
 ## Help me to add more features!
 create an new pull request and help me to develop this reportsystem!

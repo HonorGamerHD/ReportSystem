@@ -21,7 +21,7 @@
 
 declare(strict_types=1);
 
-namespace dktapps\pmforms;
+namespace ImNotYourDev\Report\libs\dktapps\pmforms;
 
 /**
  * Represents an icon which can be placed next to options on menus, or as the icon for the server-settings form type.

@@ -24,7 +24,7 @@ declare(strict_types=1);
 /**
  * API for Minecraft: Bedrock custom UI (forms)
  */
-namespace dktapps\pmforms;
+namespace ImNotYourDev\Report\libs\dktapps\pmforms;
 
 use pocketmine\form\Form;
 

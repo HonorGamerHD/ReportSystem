@@ -21,18 +21,22 @@
 
 declare(strict_types=1);
 
-namespace dktapps\pmforms\element;
+namespace ImNotYourDev\Report\libs\dktapps\pmforms\element;
 
-class StepSlider extends BaseSelector{
+/**
+ * Element which displays some text on a form.
+ */
+class Label extends CustomFormElement{
 
 	public function getType() : string{
-		return "step_slider";
+		return "label";
+	}
+
+	public function validateValue($value) : void{
+		assert($value === null);
 	}
 
 	protected function serializeElementData() : array{
-		return [
-			"steps" => $this->options,
-			"default" => $this->defaultOptionIndex
-		];
+		return [];
 	}
 }

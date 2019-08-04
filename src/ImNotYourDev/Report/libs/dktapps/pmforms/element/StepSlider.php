@@ -21,17 +21,17 @@
 
 declare(strict_types=1);
 
-namespace dktapps\pmforms\element;
+namespace ImNotYourDev\Report\libs\dktapps\pmforms\element;
 
-class Dropdown extends BaseSelector{
+class StepSlider extends BaseSelector{
 
 	public function getType() : string{
-		return "dropdown";
+		return "step_slider";
 	}
 
 	protected function serializeElementData() : array{
 		return [
-			"options" => $this->options,
+			"steps" => $this->options,
 			"default" => $this->defaultOptionIndex
 		];
 	}

@@ -2,8 +2,8 @@
 
 namespace ImNotYourDev\Report\forms;
 
-use dktapps\pmforms\MenuForm;
-use dktapps\pmforms\MenuOption;
+use ImNotYourDev\Report\libs\dktapps\pmforms\MenuForm;
+use ImNotYourDev\Report\libs\dktapps\pmforms\MenuOption;
 use ImNotYourDev\Report\Report;
 use pocketmine\Player;
 

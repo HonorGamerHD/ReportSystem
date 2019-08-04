@@ -2,10 +2,10 @@
 
 namespace ImNotYourDev\Report\forms;
 
-use dktapps\pmforms\CustomForm;
-use dktapps\pmforms\CustomFormResponse;
-use dktapps\pmforms\element\Dropdown;
-use dktapps\pmforms\element\Input;
+use ImNotYourDev\Report\libs\dktapps\pmforms\CustomForm;
+use ImNotYourDev\Report\libs\dktapps\pmforms\CustomFormResponse;
+use ImNotYourDev\Report\libs\dktapps\pmforms\element\Input;
+use ImNotYourDev\Report\libs\dktapps\pmforms\element\Dropdown;
 use ImNotYourDev\Report\Report;
 use pocketmine\Player;
 

@@ -21,22 +21,18 @@
 
 declare(strict_types=1);
 
-namespace dktapps\pmforms\element;
+namespace ImNotYourDev\Report\libs\dktapps\pmforms\element;
 
-/**
- * Element which displays some text on a form.
- */
-class Label extends CustomFormElement{
+class Dropdown extends BaseSelector{
 
 	public function getType() : string{
-		return "label";
-	}
-
-	public function validateValue($value) : void{
-		assert($value === null);
+		return "dropdown";
 	}
 
 	protected function serializeElementData() : array{
-		return [];
+		return [
+			"options" => $this->options,
+			"default" => $this->defaultOptionIndex
+		];
 	}
 }
