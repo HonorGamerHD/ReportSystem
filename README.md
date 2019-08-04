@@ -15,6 +15,7 @@ This Reportsystem is useable for one mc server network types like [Minehub](http
     - [x] Send report to all op's and permitted players
 - [ ] Missing Features
     - [x] Modular system
+    - [x] "back" and "exit" buttons
     - [ ] Multilang
     - [x] Review notification
         - [x] For new reports
@@ -48,8 +49,8 @@ No permission needed - useable for everyone
 Permission: `reportsystem.admin`
 Permission to open admin ui
 
-### /reportlist
-Permission: `reportsystem.admin`
+### /reportlist - !New Permission!
+Permission: `reportsystem.list`
 Permission to open report list
 
 ## For plugin devs
