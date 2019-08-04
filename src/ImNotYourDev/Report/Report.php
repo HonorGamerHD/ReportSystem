@@ -161,9 +161,15 @@ class Report extends PluginBase
      */
     public function setReviewed(String $reportnestdir)
     {
-        $cfg = new Config("/reports/reports.yml", Config::YAML);
-        $cfg->setNested("reports.$reportnestdir.reviewed", true);
-        $cfg->save();
+        if($this->mode == "local"){
+            $cfg = new Config($this->getDataFolder() . "reports.yml", Config::YAML);
+            $cfg->setNested("reports.$reportnestdir.reviewed", true);
+            $cfg->save();
+        }else{
+            $cfg = new Config("/reports/reports.yml", Config::YAML);
+            $cfg->setNested("reports.$reportnestdir.reviewed", true);
+            $cfg->save();
+        }
     }
 
     /**
@@ -171,17 +177,33 @@ class Report extends PluginBase
      */
     public function moveToRecycleBin(array $report)
     {
-        $cfg = new Config("/reports/reports.yml", Config::YAML);
-        $cfg->removeNested("reports." . $report["nestdir"]);
-        $cfg->save();
-
-        $cfg->setNested("recyclebin." . $report["nestdir"], $report);
-        $cfg->save();
+        if($this->mode == "local"){
+            $cfg = new Config($this->getDataFolder() . "reports.yml", Config::YAML);
+            $cfg->removeNested("reports." . $report["nestdir"]);
+            $cfg->save();
+            $cfg->setNested("recyclebin." . $report["nestdir"], $report);
+            $cfg->save();
+        }else{
+            $cfg = new Config("/reports/reports.yml", Config::YAML);
+            $cfg->removeNested("reports." . $report["nestdir"]);
+            $cfg->save();
+            $cfg->setNested("recyclebin." . $report["nestdir"], $report);
+            $cfg->save();
+        }
     }
 
+    /**
+     * @param String $reportnestdir
+     */
     public function deleteForEver(String $reportnestdir){
-        $cfg = new Config("/reports/reports.yml", Config::YAML);
-        $cfg->removeNested("recyclebin." . $reportnestdir);
-        $cfg->save();
+        if($this->mode == "local"){
+            $cfg = new Config($this->getDataFolder() . "reports.yml", Config::YAML);
+            $cfg->removeNested("recyclebin." . $reportnestdir);
+            $cfg->save();
+        }else{
+            $cfg = new Config("/reports/reports.yml", Config::YAML);
+            $cfg->removeNested("recyclebin." . $reportnestdir);
+            $cfg->save();
+        }
     }
 }
