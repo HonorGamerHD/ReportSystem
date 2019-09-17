@@ -14,7 +14,7 @@ This Reportsystem is useable for one mc server network types like [Minehub](http
     - [x] Admin ui
     - [ ] Direct ban
     - [x] Send report to all op's and permitted players
-- [ ] Missing Features
+- [x] Missing Features
     - [x] Modular system
     - [x] "back" and "exit" buttons
     - [ ] Multilang
@@ -30,7 +30,7 @@ This Reportsystem is useable for one mc server network types like [Minehub](http
     - [x] Deleteable reports
     - [x] Recycle Bin
     - [x] Discord Integration
-    - [ ] and more ;)
+    - [x] and more ;)
 - [x] API for other plugins
 
 ## Where can i download ReportSystem?
