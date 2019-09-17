@@ -9,3 +9,8 @@ prefix: "§l§0ReportSystem §r§7> "
 #modes: global, local
 #default: local
 mode: local
+
+#send new reports to discord!
+#enable with true!
+#if you want to use this feature just install my Plugin PixelgamesToDiscord(https://github.com/HonorGamerHD/PixelgamesToDiscord or https://poggit.pmmp.io/ci/HonorGamerHD/PixelgamesToDiscord/PixelgamesToDiscord)
+discord: false

@@ -2,6 +2,7 @@
 
 namespace ImNotYourDev\Report\forms;
 
+use ImNotYourDev\PGToDiscord\PGTD;
 use ImNotYourDev\Report\libs\dktapps\pmforms\CustomForm;
 use ImNotYourDev\Report\libs\dktapps\pmforms\CustomFormResponse;
 use ImNotYourDev\Report\libs\dktapps\pmforms\element\Input;
@@ -44,6 +45,10 @@ class PlayerReportForm extends CustomForm
                 Report::getInstance()->saveReport($reportname, $player->getName(), $playername, $desc, $notizen);
                 $player->sendMessage(Report::getInstance()->prefix . "§eYour report was sent!");
                 Report::getInstance()->sendReportToMod();
+
+                if(Report::getInstance()->discord){
+                    PGTD::getInstance()->sendMessage(array("message" => "NEW Report! " . $player->getName() . " reported $playername for $desc!"), PGTD::TYPE_PLUGIN);
+                }
             }else{
                 $player->removeAllWindows();
                 $player->sendMessage(Report::getInstance()->prefix . "§cReport was not send and got deleted!");

@@ -2,6 +2,7 @@
 
 namespace ImNotYourDev\Report;
 
+use ImNotYourDev\PGToDiscord\PGTD;
 use ImNotYourDev\Report\commands\AdminCommand;
 use ImNotYourDev\Report\commands\ReportCommand;
 use ImNotYourDev\Report\commands\ReportListCommand;
@@ -17,6 +18,7 @@ class Report extends PluginBase
     public $prefix;
     public $mode = "local";
     public $unreviewed = false;
+    public $discord;
 
     public function onEnable()
     {
@@ -36,6 +38,13 @@ class Report extends PluginBase
         $this->getServer()->getCommandMap()->register("report", new ReportCommand("report"));
         $this->getServer()->getCommandMap()->register("reportadmin", new AdminCommand("reportadmin"));
         $this->getServer()->getCommandMap()->register("reportlist", new ReportListCommand("reportlist"));
+
+        if($this->getServer()->getPluginManager()->getPlugin("PixelgamesToDiscord") != null){
+            if($this->getPluginConfig()->get("discord")){
+                $this->discord = true;
+                PGTD::getInstance()->sendMessage(array("message" => "ReportSystem is now connected!"), PGTD::TYPE_PLUGIN);
+            }
+        }
 
         $this->getLogger()->info("§7System mode: §e" . $this->mode);
         $this->getLogger()->info($this->prefix . "ReportSystem by ImNotYourDev enabled!");
