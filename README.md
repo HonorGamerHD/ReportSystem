@@ -1,7 +1,8 @@
 # ReportSystem - modular Reportsystem
-simple and clean reportsystem with UI's for everyone!
-<br>this plugin use [dktapps](https://github.com/dktapps) great [pmforms](https://github.com/dktapps-pm-pl/pmforms) API library.
+Simple and clean reportsystem with UI's for everyone!
+<br>This plugin use [dktapps](https://github.com/dktapps) great [pmforms](https://github.com/dktapps-pm-pl/pmforms) API library.
 This Reportsystem is useable for one mc server network types like [Minehub](https://minehub.de) or [Server.pro](https://server.pro) servers and also for bigger networks with more than one mc server!
+<br>NEW: Discord Integration! Just install [PixelgamesToDiscord](https://github.com/honorgamerhd/pixelgamestodiscord) put in your webhook link and enable discord integration in this plugins configuration!
 
 ## Todo List
 
@@ -28,6 +29,7 @@ This Reportsystem is useable for one mc server network types like [Minehub](http
         - [ ] messages
     - [x] Deleteable reports
     - [x] Recycle Bin
+    - [x] Discord Integration
     - [ ] and more ;)
 - [x] API for other plugins
 
