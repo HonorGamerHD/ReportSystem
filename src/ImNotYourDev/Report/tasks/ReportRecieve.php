@@ -13,7 +13,7 @@ class ReportRecieve extends Task
         $cfg = new Config("/reports/inf.yml", Config::YAML);
         if($cfg->get("new")){
             foreach (Report::getInstance()->getServer()->getOnlinePlayers() as $player){
-                if($player->hasPermission("reportssystem.admin")){
+                if($player->hasPermission("reportsystem.admin")){
                     $player->sendMessage(Report::getInstance()->prefix . "§eNew Report! §7Use /reportadmin to see latest reports!");
                 }
             }
